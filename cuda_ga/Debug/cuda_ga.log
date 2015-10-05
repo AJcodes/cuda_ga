@@ -1,0 +1,57 @@
+﻿Build started 9/23/2015 2:38:23 PM.
+     1>Project "C:\Users\Adel\documents\visual studio 2010\Projects\cuda_ga\cuda_ga\cuda_ga.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\cuda_ga.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       AddCudaCompileDeps:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\cl.exe /E /nologo /showIncludes /TP /D__CUDACC__ /DWIN32 /D_DEBUG /D_CONSOLE /D_MBCS /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\bin" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include" /I. /FIcuda_runtime.h /c "C:\Users\Adel\documents\visual studio 2010\Projects\cuda_ga\cuda_ga\kernel.cu" 
+       AddCudaCompilePropsDeps:
+       Skipping target "AddCudaCompilePropsDeps" because all output files are up-to-date with respect to the input files.
+       CudaBuild:
+         Compiling CUDA source file kernel.cu...
+         cmd.exe /C "C:\Users\Adel\AppData\Local\Temp\tmp66a25dd3f8b3485e817937abf93b5684.cmd"
+         "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2010 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd  " -o Debug\kernel.cu.obj "C:\Users\Adel\documents\visual studio 2010\Projects\cuda_ga\cuda_ga\kernel.cu"
+         
+         C:\Users\Adel\documents\visual studio 2010\Projects\cuda_ga\cuda_ga>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2010 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd  " -o Debug\kernel.cu.obj "C:\Users\Adel\documents\visual studio 2010\Projects\cuda_ga\cuda_ga\kernel.cu" 
+     1>C:/Users/Adel/documents/visual studio 2010/Projects/cuda_ga/cuda_ga/kernel.cu(123): warning : variable "pop_alpha" was declared but never referenced
+         
+     1>C:/Users/Adel/documents/visual studio 2010/Projects/cuda_ga/cuda_ga/kernel.cu(123): warning : variable "pop_beta" was declared but never referenced
+         
+     1>C:/Users/Adel/documents/visual studio 2010/Projects/cuda_ga/cuda_ga/kernel.cu(124): warning : variable "buffer" was declared but never referenced
+         
+     1>C:/Users/Adel/documents/visual studio 2010/Projects/cuda_ga/cuda_ga/kernel.cu(123): warning : variable "pop_alpha" was declared but never referenced
+         
+     1>C:/Users/Adel/documents/visual studio 2010/Projects/cuda_ga/cuda_ga/kernel.cu(123): warning : variable "pop_beta" was declared but never referenced
+         
+     1>C:/Users/Adel/documents/visual studio 2010/Projects/cuda_ga/cuda_ga/kernel.cu(124): warning : variable "buffer" was declared but never referenced
+         
+         kernel.cu
+     1>C:/Users/Adel/documents/visual studio 2010/Projects/cuda_ga/cuda_ga/kernel.cu(123): warning C4101: 'pop_alpha' : unreferenced local variable
+     1>C:/Users/Adel/documents/visual studio 2010/Projects/cuda_ga/cuda_ga/kernel.cu(123): warning C4101: 'pop_beta' : unreferenced local variable
+     1>C:/Users/Adel/documents/visual studio 2010/Projects/cuda_ga/cuda_ga/kernel.cu(124): warning C4101: 'buffer' : unreferenced local variable
+       ManifestResourceCompile:
+         All outputs are up-to-date.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Adel\documents\visual studio 2010\Projects\cuda_ga\Debug\cuda_ga.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\lib\Win32" cudart.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\cuda_ga.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Adel\documents\visual studio 2010\Projects\cuda_ga\Debug\cuda_ga.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Adel\documents\visual studio 2010\Projects\cuda_ga\Debug\cuda_ga.lib" /MACHINE:X86 Debug\kernel.cu.obj
+         Debug\cuda_ga.exe.embed.manifest.res
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\cuda_ga.exe.embed.manifest" /manifest Debug\cuda_ga.exe.intermediate.manifest
+         All outputs are up-to-date.
+       LinkEmbedManifest:
+         All outputs are up-to-date.
+         cuda_ga.vcxproj -> C:\Users\Adel\documents\visual studio 2010\Projects\cuda_ga\Debug\cuda_ga.exe
+       PostBuildEvent:
+         echo copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\bin\cudart*.dll" "C:\Users\Adel\documents\visual studio 2010\Projects\cuda_ga\Debug\"
+         copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\bin\cudart*.dll" "C:\Users\Adel\documents\visual studio 2010\Projects\cuda_ga\Debug\"
+         :VCEnd
+         copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\bin\cudart*.dll" "C:\Users\Adel\documents\visual studio 2010\Projects\cuda_ga\Debug\"
+         C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\bin\cudart32_70.dll
+         C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.0\bin\cudart64_70.dll
+                 2 file(s) copied.
+       FinalizeBuildStatus:
+         Deleting file "Debug\cuda_ga.unsuccessfulbuild".
+         Touching "Debug\cuda_ga.lastbuildstate".
+     1>Done Building Project "C:\Users\Adel\documents\visual studio 2010\Projects\cuda_ga\cuda_ga\cuda_ga.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:12.74
