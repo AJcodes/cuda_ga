@@ -47,31 +47,49 @@ __device__ void elitismKernel(struct ga_struct *population, struct ga_struct *bu
 __global__ void initKernel(struct ga_struct *population, const int size) {
 	unsigned int id = blockIdx.x * BLOCKSIZE + threadIdx.x;
 	unsigned int seed = id + 1;
-	//for (int i=0; i<GA_POPSIZE; i++) {
-	ga_struct citizen;
-	citizen.fitness = 0;
-	//citizen.str = "";
-	for (int j = 0; j < size; j++)
-		citizen.str[j] = (rand(&seed, 90) + 32);
+	if (id < GA_POPSIZE) {
+		ga_struct citizen;
+		citizen.fitness = 0;
+		for (int j = 0; j < size; j++)
+			citizen.str[j] = (rand(&seed, 90) + 32);
 
-	population[id] = citizen;
-	//}
-
+		population[id] = citizen;
+	}
 }
 
 __global__ void calcKernel(struct ga_struct *population, const int size) {
 	unsigned int id = blockIdx.x * BLOCKSIZE + threadIdx.x;
-	char *target = GA_TARGET;
-	unsigned int fitness = 0;
-	ga_struct pop = population[id];
-	for (int j = 0; j < size; j++)
-		fitness += abs(pop.str[j] - target[j]);
+	if (id < GA_POPSIZE) {
+		char *target = GA_TARGET;
+		unsigned int fitness = 0;
+		ga_struct pop = population[id];
+		for (int j = 0; j < size; j++)
+			fitness += abs(pop.str[j] - target[j]);
 
-	population[id].fitness = fitness;
+		population[id].fitness = fitness;
+	}
 }
 
 __global__ void bestKernel(struct ga_struct *population, struct ga_struct *best) {
+	__shared__ struct ga_struct temp[BLOCKSIZE];
+	unsigned int tid = threadIdx.x;
+	unsigned int i = blockIdx.x * BLOCKSIZE + threadIdx.x;
+	if (i < GA_POPSIZE) {
+		temp[tid] = population[i];
+		__syncthreads();
+		for (unsigned int s = 1; s < blockDim.x; s *= 2) {
+			int index = 2 * s * tid;
+			if (index < blockDim.x) {
+				if (temp[tid + s].fitness < temp[tid].fitness)
+					temp[tid] = temp[tid + s];
+			}
+			__syncthreads();
+		}
+	}
 
+	if (tid == 0) {
+		best[blockIdx.x] = temp[0];
+	}
 }
 
 __global__ void mateKernel(struct ga_struct *population, struct ga_struct *buffer) {
@@ -144,7 +162,7 @@ cudaError_t gaCuda(struct ga_struct *population, int size) {
     initKernel<<<dimGrid, dimBlock>>>(dev_population, size);
 
 	for (int i=0; i<GA_MAXITER; i++) {
-		
+		calcKernel<<<dimGrid, dimBlock>>>(dev_population, size);
 	}
 
     cudaStatus = cudaGetLastError();
